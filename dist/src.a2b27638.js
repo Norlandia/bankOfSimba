@@ -24739,7 +24739,7 @@ function (_React$Component) {
       event.preventDefault();
       event.persist();
       var name = event.target[0].value;
-      var isKing = event.target[1].value === 'on';
+      var isKing = event.target[1].checked;
       animals.push({
         name: name,
         balance: 0,

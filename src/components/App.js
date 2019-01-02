@@ -19,7 +19,7 @@ export class App extends React.Component {
     event.preventDefault();
     event.persist();
     const name = event.target[0].value;
-    const isKing = event.target[1].value === 'on';
+    const isKing = event.target[1].checked;
 
     animals.push({
       name: name,
