@@ -22,15 +22,18 @@ export class Header extends React.Component {
     }
   }
 
+  isKingBackground(isKing) {
+    if (isKing) {
+      return `rgb(0, 255, 0)`;
+    }
+    return `rgb(255, 0, 0)`;
+  }
+
   render() {
     return (
       <div
         style={{
-          backgroundColor: `rgb(
-            ${255 - this.state.count},
-            ${255 - this.state.count},
-            ${255 - this.state.count}
-          )`,
+          backgroundColor: this.isKingBackground(this.state.isKing),
         }}
       >
         <h1>{`${this.state.name} : ${this.state.count}`}</h1>

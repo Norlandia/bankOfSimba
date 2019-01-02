@@ -24545,13 +24545,22 @@ function (_React$Component) {
       }
     }
   }, {
+    key: "isKingBackground",
+    value: function isKingBackground(isKing) {
+      if (isKing) {
+        return "rgb(0, 255, 0)";
+      }
+
+      return "rgb(255, 0, 0)";
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this2 = this;
 
       return _react.default.createElement("div", {
         style: {
-          backgroundColor: "rgb(\n            ".concat(255 - this.state.count, ",\n            ").concat(255 - this.state.count, ",\n            ").concat(255 - this.state.count, "\n          )")
+          backgroundColor: this.isKingBackground(this.state.isKing)
         }
       }, _react.default.createElement("h1", null, "".concat(this.state.name, " : ").concat(this.state.count)), _react.default.createElement("button", {
         onClick: function onClick() {
