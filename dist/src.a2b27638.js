@@ -24524,8 +24524,9 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Header).call(this, props));
     _this.state = {
-      name: props.name,
-      count: 0
+      name: props.animal.name,
+      count: props.animal.balance,
+      isKing: props.animal.isKing
     };
     return _this;
   }
@@ -24533,9 +24534,15 @@ function (_React$Component) {
   _createClass(Header, [{
     key: "increase",
     value: function increase() {
-      this.setState({
-        count: this.state.count + 1
-      });
+      if (this.state.isKing) {
+        this.setState({
+          count: this.state.count + 10
+        });
+      } else {
+        this.setState({
+          count: this.state.count + 1
+        });
+      }
     }
   }, {
     key: "render",
@@ -24544,7 +24551,7 @@ function (_React$Component) {
 
       return _react.default.createElement("div", {
         style: {
-          backgroundColor: "rgb(\n            ".concat(this.state.count, ",\n            ").concat(this.state.count, ",\n            ").concat(this.state.count, "\n          )")
+          backgroundColor: "rgb(\n            ".concat(255 - this.state.count, ",\n            ").concat(255 - this.state.count, ",\n            ").concat(255 - this.state.count, "\n          )")
         }
       }, _react.default.createElement("h1", null, "".concat(this.state.name, " : ").concat(this.state.count)), _react.default.createElement("button", {
         onClick: function onClick() {
@@ -24593,14 +24600,29 @@ var _Header = require("./Header");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var animals = [{
+  name: 'Norlandia',
+  balance: 0,
+  isKing: true
+}, {
+  name: 'Kond',
+  balance: 0,
+  isKing: false
+}, {
+  name: 'Mark',
+  balance: 0,
+  isKing: false
+}];
+
 var App = function App() {
-  return _react.default.createElement("div", null, _react.default.createElement(_Header.Header, {
-    name: "Norlandia"
-  }), _react.default.createElement(_Header.Header, {
-    name: "Norlandia"
+  return _react.default.createElement("div", null, animals.map(function (animal, index) {
+    return _react.default.createElement(_Header.Header, {
+      animal: animal,
+      key: index
+    });
   }));
 }; // const App = () => {
-//   return ( 
+//   return (
 //     <div>
 //       <Header />
 //     </div>
@@ -24649,7 +24671,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61305" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55831" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
